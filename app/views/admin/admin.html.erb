@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recettes</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <h1>Admin</h1>
+    <ul>
+      <% @users.all.each do |user| %>
+        <% if user.recettes.length != 0 %>
+          <li>
+            <%= user.nom %> <%= user.prenom %>
+            <ol>
+            <% for i in 0..user.recettes.length-1 %>
+              <li>
+                <a target=_blank href=recettes/<%= user.recettes[i].id %>><%= user.recettes[i].titre %></a>
+              </li>
+            <% end %>
+            </ol>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>    
+  </body>
+</html>
