@@ -1,6 +1,6 @@
 <h1>Les recettes</h1>
 <ul>
-  <% @recettes.all.each do |recette| %>
+  <% @recettes.each do |recette| %>
     <li>
       <a href=recettes/<%= recette.id %> target=_blank><%= recette.titre %></a>
     </li>

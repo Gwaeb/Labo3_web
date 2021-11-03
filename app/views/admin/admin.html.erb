@@ -1,15 +1,15 @@
 <h1>Admin</h1>
 <ul>
-  <% @users.all.each do |user| %>
+  <% @users.each do |user| %>
     <% if user.recettes.length != 0 %>
       <li>
         <%= user.nom %> <%= user.prenom %>
         <ol>
-        <% for i in 0..user.recettes.length-1 %>
-          <li>
-            <a target=_blank href=recettes/<%= user.recettes[i].id %>><%= user.recettes[i].titre %></a>
-          </li>
-        <% end %>
+          <% user.recettes.each do |recette| %>
+            <li>
+              <a target=_blank href=recettes/<%= recette.id %>><%= recette.titre %></a>
+            </li>
+          <% end %>
         </ol>
       </li>
     <% end %>
